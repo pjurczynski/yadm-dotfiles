@@ -1,0 +1,1 @@
+/Users/pjurczyn/.dotfiles/spacemacs/spacemacs.symlink
