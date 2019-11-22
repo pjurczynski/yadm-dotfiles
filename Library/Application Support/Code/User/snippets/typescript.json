@@ -1,0 +1,125 @@
+{
+	// Place your snippets for typescript here. Each snippet is defined under a snippet name and has a prefix, body and 
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+	// same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"describe test case in jest": {
+		"prefix": "jest-describe",
+		"body": [
+			"describe(\"$1\", () => {",
+			"  $0",
+			"});"
+		],
+		"description": "A describe block in jest"
+	},
+	"test case in jest - test": {
+		"prefix": "jest-test",
+		"body": [
+			"test(\"$1\", () => {",
+			"  expect($2).$0",
+			"});"
+		],
+		"description": "A simple test case in jest"
+	},
+	"test case in jest - it": {
+		"prefix": "jest-it",
+		"body": [
+			"it(\"$1\", () => {",
+			"  expect($2).$0",
+			"});"
+		],
+		"description": "A simple test case in jest"
+	},
+	"marble test case in jest": {
+		"prefix": "jest-marble-test",
+		"body": [
+			"it(",
+			"  \"$1\",",
+			"  marbles((m) => {",
+			"    m.expect($2).$0",
+			"  })",
+			");"
+		],
+		"description": "A marble test case in jest"
+	},
+	"before each": {
+		"prefix": "jest-before-each",
+		"body": [
+			"beforeEach(() => {",
+			"  $0",
+			"});"
+		],
+		"description": "Add a before each block to your tests."
+	},
+	"fast component tests": {
+		"prefix": "jest-component-setup",
+		"body": [
+			"  const oldResetTestingModule = TestBed.resetTestingModule;",
+			"  beforeAll(done =>",
+			"    (async () => {",
+			"      TestBed.resetTestingModule();",
+			"      TestBed.configureTestingModule({",
+			"        $0",
+			"      });",
+			"      await TestBed.compileComponents();",
+			"",
+			"      // prevent Angular from resetting testing module",
+			"      TestBed.resetTestingModule = () => TestBed;",
+			"    })()",
+			"      .then(done)",
+			"      .catch(done.fail)",
+			"  );",
+			"",
+			"  afterAll(() => {",
+			"    // reinstate resetTestingModule method",
+			"    TestBed.resetTestingModule = oldResetTestingModule;",
+			"    TestBed.resetTestingModule();",
+			"  });",
+		]
+	},
+	"container component test": {
+		"prefix": "jest-container-component",
+		"body": [
+			"import { TestBed } from '@angular/core/testing';",
+			"import { NO_ERRORS_SCHEMA } from '@angular/core';",
+			"import { $1Component } from './$2.component';",
+			"",
+			"function setup() {",
+			"  const component = new $1Component();",
+			"",
+			"  return { component };",
+			"}",
+			"",
+			"describe($1Component.name, () => {",
+			"  it('should create', () => {",
+			"    TestBed.configureTestingModule({",
+			"      declarations: [$1Component],",
+			"      schemas: [NO_ERRORS_SCHEMA]",
+			"    }).compileComponents();",
+			"    const fixture = TestBed.createComponent($1Component);",
+			"    const component = fixture.componentInstance;",
+			"    fixture.detectChanges();",
+			"    expect(component).toBeTruthy();",
+			"  });",
+			"",
+			"  describe('$3', () => {",
+			"    test('$4', () => {",
+			"      $0",
+			"      const { component } = setup();",
+			"      expect(component).toBe(true);",
+			"    });",
+			"  });",
+			"});",
+			""
+		]
+	}
+}

@@ -1,0 +1,29 @@
+// Place your key bindings in this file to overwrite the defaults
+// [
+//   {
+//     "key": ", .",
+//     "command": "editor.action.quickFix",
+//     "when": "editorTextFocus && vim.active && !inDebugRepl && vim.mode == 'Normal'"
+//   },
+// ]
+[
+  {
+    "key": "alt+space",
+    "command": "editor.action.triggerSuggest",
+    "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+space",
+    "command": "-editor.action.triggerSuggest",
+    "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.terminal.focus"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "terminalFocus"
+  }
+]
