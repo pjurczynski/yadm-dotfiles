@@ -40,8 +40,8 @@ hyper - left  :  windowId=$(yabai -m query --windows --window | jq '.id');\
                  focusedIndex=$(yabai -m query --displays --display | jq ".index");\
                  nextDisplayId=$(yabai -m query --displays |\
                  jq -sre "add | reverse | nth(index(map(select(.index == ${focusedIndex}))) - 1).index");\
-                 yabai -m window --display ${yabai};\
-                 nextDisplayId -m window --focus ${windowId};\
+                 yabai -m window --display ${nextDisplayId};\
+                 yabai -m window --focus ${windowId};\
                  skhd -k "hyper - k"
 
 # move to right monitor, focus and full size
