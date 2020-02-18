@@ -1,0 +1,58 @@
+# move to left
+hyper - h : yabai -m window --grid 1:2:0:0:1:1
+
+# move to right
+hyper - l : yabai -m window --grid 1:2:1:0:1:1
+
+# fill screen
+hyper - k : yabai -m window --grid 1:1:0:0:1:1
+
+# focus terminal
+alt - t : appId=$(yabai -m query --windows | jq '.[] | select(.app | test("iTerm")).id');\
+          yabai -m window --focus ${appId}
+
+# focus browser
+alt - b : appId=$(yabai -m query --windows | jq '.[] | select(.app | test("Chrome")).id');\
+          yabai -m window --focus ${appId}
+
+# focus communicator
+alt - c : appId=$(yabai -m query --windows | jq '.[] | select(.app | test("Chat")).id');\
+          yabai -m window --focus ${appId}
+
+# focus music
+alt - m : appId=$(yabai -m query --windows | jq '.[] | select(.app | test("Spotify")).id');\
+          yabai -m window --focus ${appId}
+
+# focus editor
+alt - e : appId=$(yabai -m query --windows | jq '.[] | select(.app | test("Code")).id');\
+          yabai -m window --focus ${appId}
+
+# focus todos
+alt - k : appId=$(yabai -m query --windows | jq '.[] | select(.app | test("Evernote")).id');\
+          yabai -m window --focus ${appId}
+
+# focus git app
+alt - g : appId=$(yabai -m query --windows | jq '.[] | select(.app | test("Emacs")).id');\
+          yabai -m window --focus ${appId}
+
+# move to left monitor, focus and full size
+hyper - left  :  windowId=$(yabai -m query --windows --window | jq '.id');\
+                 focusedIndex=$(yabai -m query --displays --display | jq ".index");\
+                 nextDisplayId=$(yabai -m query --displays |\
+                 jq -sre "add | reverse | nth(index(map(select(.index == ${focusedIndex}))) - 1).index");\
+                 yabai -m window --display ${yabai};\
+                 nextDisplayId -m window --focus ${windowId};\
+                 skhd -k "hyper - k"
+
+# move to right monitor, focus and full size
+hyper - right  : windowId=$(yabai -m query --windows --window | jq '.id');\
+                 focusedIndex=$(yabai -m query --displays --display | jq ".index");\
+                 nextDisplayId=$(yabai -m query --displays |\
+                 jq -sre "add | nth(index(map(select(.index == ${focusedIndex}))) - 1).index");\
+                 yabai -m window --display ${nextDisplayId};\
+                 yabai -m window --focus ${windowId};\
+                 skhd -k "hyper - k"
+
+
+# reload config
+hyper - r : skhd --reload
