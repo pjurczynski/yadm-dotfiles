@@ -998,6 +998,58 @@
     {
       "before": [
         "<leader>",
+        "g",
+        "a",
+        "h"
+      ],
+      "commands": [
+        {
+          "command": "extension.switchTemplate"
+        }
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "g",
+        "a",
+        "c"
+      ],
+      "commands": [
+        {
+          "command": "extension.switchTS"
+        }
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "g",
+        "a",
+        "s"
+      ],
+      "commands": [
+        {
+          "command": "extension.switchStyle"
+        }
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "g",
+        "a",
+        "t"
+      ],
+      "commands": [
+        {
+          "command": "extension.switchSpec"
+        }
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
         "p",
         "s"
       ],
@@ -1035,7 +1087,6 @@
   "workbench.sideBar.location": "left",
   "workbench.activityBar.visible": true,
   "gitlens.codeLens.enabled": false,
-  "search.location": "panel",
   "window.zoomLevel": -1,
   "editor.fontLigatures": true,
   "extensions.showRecommendationsOnlyOnDemand": true,
@@ -1126,11 +1177,13 @@
     "**/.settings": true,
     "**/.factorypath": true
   },
-  "workbench.colorTheme": "Base16 Dark Eighties",
   "typescript.tsserver.log": "verbose",
   "git.enableSmartCommit": true,
   "angularConsole.useNVM": false,
   "scss.validate": false,
   "todo-tree.highlights.enabled": true,
   "terminal.integrated.rendererType": "dom",
+  "editor.multiCursorModifier": "ctrlCmd",
+  "workbench.colorTheme": "Relaxed",
+  "editor.wordWrapColumn": 100,
 }

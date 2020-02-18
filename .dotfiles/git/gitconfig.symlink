@@ -12,17 +12,17 @@
         df = diff
         dc = diff --cached
         eo = checkout
-        rs = !git-reup origin staging
-				co = checkout
+        rs = rebase origin/staging
+        co = checkout
         amend = commit --amend
         cm = commit -m
-				blist = branch --sort=-committerdate
+        blist = branch --sort=-committerdate
         promote = git-promote
         wtf     = git-wtf
         rank-contributors = git-rank-contributors
-        track = git-track
-        nuke = git-nuke
-        delete-local = git-delete-local-merged
+        track = !git-track
+        nuke = !git-nuke
+        delete-local = !git-delete-local-merged
         undo = git-undo
         count   = !git shortlog -sn
         slap = "log --oneline --decorate --all --graph"

@@ -1,1 +1,79 @@
-/Users/pjurczyn/.rbenv/bin:/Users/pjurczyn/.rbenv/bin:/Users/pjurczyn/.rbenv/shims:/Users/pjurczyn/.rbenv/bin:/usr/local/opt/qt@5.5/bin:/Users/pjurczyn/.rbenv/shims:/Users/pjurczyn/.rbenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Users/pjurczyn/.local/bin:/Users/pjurczyn/.npm-global/bin:.:buildutil:/Users/pjurczyn/bin:/Users/pjurczyn/local/bin:/usr/local/sbin:/Users/pjurczyn/.dotfiles/bin:/Users/pjurczyn/.yarn/bin:/Users/pjurczyn/Applications/maven/bin
+# Path to your oh-my-zsh configuration.
+source /etc/profile
+export OMZ_ZSH_ROOT="$HOME/.oh-my-zsh"
+ZSH=$OMZ_ZSH_ROOT # for oh my zsh configuration
+# export ZSH_CUSTOM="$HOME/.dotfiles/zsh/derek_wyatt"
+export ZSH_ROOT="$HOME/.dotfiles/zsh"
+export NO_AT_BRIDGE=1 # fix for webkit issue (http://elementaryos.stackexchange.com/questions/3819/couldnt-connect-to-accessibility-bus-failed-to-connect-to-socket)
+export CONVENTIONAL_GITHUB_RELEASER_TOKEN=3d2cd61747ef4dcc7d9245738c2115d0b1671095
+export DISABLE_AUTO_UPDATE=false
+
+ZSH_THEME=""
+COMPLETION_WAITING_DOTS="true"
+
+plugins=(gitfast vim-interaction zsh-syntax-highlighting zsh-autosuggestions yarn-autocompletions)
+source $OMZ_ZSH_ROOT/oh-my-zsh.sh
+# source $ZSH_CUSTOM/themes/gnzh.zsh-theme
+source $ZSH_ROOT/aliases.zsh
+source $ZSH_ROOT/personal.zsh
+source $ZSH_ROOT/completion.zsh
+source $ZSH_ROOT/history.zsh
+source $ZSH_ROOT/keys.zsh
+source $ZSH_ROOT/prompt.zsh
+source $ZSH_ROOT/window.zsh
+source $ZSH_ROOT/autoloads.zsh
+
+source $(brew --prefix autoenv)/activate.sh
+
+export EDITOR=nvim
+
+setopt ignore_eof # disable ^D for exiting from shell
+setopt rm_star_silent # no prompt for rm *
+unsetopt nomatch # don't throw errors when no match for *
+unsetopt correct_all # disable autocorrection of mistyped arguments
+
+# set directory stack
+setopt auto_pushd # http://stackoverflow.com/questions/3986760/cd-1-2-3-etc-in-z-shell
+setopt pushd_silent
+setopt pushd_ignore_dups
+export SS_DISPLAY_LIMIT=25
+
+# Base16 Shell
+BASE16_SCHEME="default"
+BASE16_SHELL=$HOME/.config/base16-shell/
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+# base16_default-dark
+
+# Configure NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && nvm use stable --silent
+
+# export shell level
+if [[ -z ${MY_SHELL_LEVEL} ]]; then
+  export MY_SHELL_LEVEL=0
+else
+  export MY_SHELL_LEVEL=$(($MY_SHELL_LEVEL+1))
+fi
+
+# added by travis gem
+[ -f /Users/piotrjurczynski/.travis/travis.sh ] && source /Users/piotrjurczynski/.travis/travis.sh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export TERMINAL=urxvt
+export DOCKER_MACHINE_IP=http://localhost
+alias android-connect="mtpfs -o allow_other /media/androiddevice"
+alias android-disconnect="fusermount -u /media/androiddevice"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export PATH="$HOME/.rbenv/bin:$PATH"
+if type "rbenv" > /dev/null; then
+  eval "$(rbenv init -)"
+fi
+eval "$(fasd --init auto)"
+export PATH="$PATH:$HOME/.yarn/bin"
+export PATH="/usr/local/opt/qt@5.5/bin:$PATH"
+export PATH="$PATH:$HOME/Applications/maven/bin"
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+source ./emsdk_env.sh
