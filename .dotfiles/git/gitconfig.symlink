@@ -14,7 +14,7 @@
         eo = checkout
         rs = rebase origin/staging
         co = checkout
-        amend = commit --amend
+        amend = commit --amen
         cm = commit -m
         blist = branch --sort=-committerdate
         promote = git-promote

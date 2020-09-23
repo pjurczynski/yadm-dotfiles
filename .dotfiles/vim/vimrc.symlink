@@ -143,6 +143,8 @@ Plugin 'JulesWang/css.vim'
 " https://github.com/arakashic/chromatica.nvim
 Plugin 'arakashic/chromatica.nvim'
 Plugin 'burnettk/vim-angular'
+Plugin 'fedorenchik/AnsiEsc'
+
 let g:chromatica#libclang_path='/usr/local/opt/llvm/lib'
 
 

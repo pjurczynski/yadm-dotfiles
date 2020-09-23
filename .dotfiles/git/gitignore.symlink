@@ -17,6 +17,7 @@ GSYMS
 *.#*
 
 .projections
+.projections.json
 .vscode
 
 debug-private.scss

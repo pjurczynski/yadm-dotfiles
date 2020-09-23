@@ -28,7 +28,7 @@ alt - e : appId=$(yabai -m query --windows | jq '.[] | select(.app | test("Code"
           yabai -m window --focus ${appId}
 
 # focus todos
-alt - k : appId=$(yabai -m query --windows | jq '.[] | select(.app | test("Evernote")).id');\
+alt - n : appId=$(yabai -m query --windows | jq '.[] | select(.app | test("Notion")).id');\
           yabai -m window --focus ${appId}
 
 # focus git app

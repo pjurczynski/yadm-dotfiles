@@ -7,6 +7,7 @@ export ZSH_ROOT="$HOME/.dotfiles/zsh"
 export NO_AT_BRIDGE=1 # fix for webkit issue (http://elementaryos.stackexchange.com/questions/3819/couldnt-connect-to-accessibility-bus-failed-to-connect-to-socket)
 export CONVENTIONAL_GITHUB_RELEASER_TOKEN=3d2cd61747ef4dcc7d9245738c2115d0b1671095
 export DISABLE_AUTO_UPDATE=false
+export LC_ALL=en_US.UTF-8
 
 ZSH_THEME=""
 COMPLETION_WAITING_DOTS="true"
@@ -23,7 +24,9 @@ source $ZSH_ROOT/prompt.zsh
 source $ZSH_ROOT/window.zsh
 source $ZSH_ROOT/autoloads.zsh
 
-source $(brew --prefix autoenv)/activate.sh
+
+# this breaks with mac Catalina
+# source $(dirname $(dirname $(which brew)))/opt/autoenv/activate.sh
 
 export EDITOR=nvim
 
@@ -76,4 +79,4 @@ export PATH="$PATH:$HOME/Applications/maven/bin"
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
-source ./emsdk_env.sh
+# source ./emsdk_env.sh
